@@ -1,3 +1,15 @@
+# File: http_requests.py
+# Description: Example on how to create and use http-requests in Python
+# Environment: PyCharm and Anaconda environment
+#
+# MIT License
+# Copyright (c) 2018 Valentyn N Sichkar
+# github.com/sichkar-valentyn
+#
+# Reference to:
+# [1] Valentyn N Sichkar. Example on how to create and use http-requests in Python // GitHub platform [Electronic resource]. URL: https://github.com/sichkar-valentyn/http_requests (date of access: XX.XX.XXXX)
+
+
 # Working with http-requests with the help of library 'requests'
 
 import requests
@@ -47,10 +59,8 @@ print(respond.text)  # <!DOCTYPE html><html ...
 # Implementing the task
 # We have as input two links
 # We need to check if it is possible to go through first link to the second in two steps
-#link1 = input()
-#link2 = input()
-link1 = 'https://stepic.org/media/attachments/lesson/24472/sample1.html'
-link2 = 'https://stepic.org/media/attachments/lesson/24472/sample2.html'
+link1 = input()
+link2 = input()
 
 # Creating a request for the first link
 respond1 = requests.get(link1)
