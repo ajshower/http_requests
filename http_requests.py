@@ -97,3 +97,69 @@ if link2 in inclusions2:
 else:
     print('No')
 
+
+# Implementing the task 2
+# As an input there is a link where we need to find all links
+# Then to extract domains from that links and sort them by alphabetical order
+# link = input()
+#
+# # Creating a request for the link
+# respond = requests.get(link)
+#
+# # Getting the content of the link in form of text
+# content = respond.text
+
+# Finding all links inside the content
+# We create pattern for regular expression
+# Option 1 (Go further to have a look on the Option 2)
+pattern = r'href=("|\')(http://)?(https://)?(ftp://)?(\w.*)("|\')'
+
+test = '''<a href="http://stepic.org/courses">
+<a href='https://stepic.org'>
+<a href='http://neerc.ifmo.ru:1345'>
+<a href="ftp://mail.ru/distib" >
+<a href="ya.ru">
+<a href="www.ya.ru">
+<a href="../skip_relative_links">'''
+
+# Getting a list with all urls inside document
+inclusions = re.findall(pattern, test)
+
+domains = []
+s = {}
+
+for i in range(len(inclusions)):
+    if '/' in inclusions[i][4]:
+        x = inclusions[i][4].split('/')
+        domains += [x[0]]
+    elif ':' in inclusions[i][4]:
+        x = inclusions[i][4].split(':')
+        domains += [x[0]]
+    else:
+        domains += [inclusions[i][4]]
+
+s = set(domains)
+
+domains = sorted(list(s))
+
+print(domains)
+
+# Option 2
+# Another way - to use more complex regular expression
+pattern = r'<a(.*?)href(.*?)=(.*?)(\"|')(((.*?):\/\/)|(\.\.)|)(.*?)(\/|:|\"|')(.*)'
+
+# Getting a list with all urls inside document
+inclusions = re.findall(pattern, test)
+                                                                    
+domains = []
+                                                                    
+for link in inclusions:
+    x = link[8]
+    if x not in result:
+        domains.append(x)
+
+domains.sort()
+
+for x in domains:
+    print(x)
+
