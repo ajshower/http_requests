@@ -147,7 +147,7 @@ print(domains)
 
 # Option 2
 # Another way - to use more complex regular expression
-pattern = r'<a(.*?)href(.*?)=(.*?)(\"|')(((.*?):\/\/)|(\.\.)|)(.*?)(\/|:|\"|')(.*)'
+pattern = r"<a(.*?)href(.*?)=(.*?)(\"|')(((.*?):\/\/)|(\.\.)|)(.*?)(\/|:|\"|')(.*)"
 
 # Getting a list with all urls inside document
 inclusions = re.findall(pattern, test)
@@ -156,7 +156,7 @@ domains = []
                                                                     
 for link in inclusions:
     x = link[8]
-    if x not in result:
+    if x not in domains:
         domains.append(x)
 
 domains.sort()
