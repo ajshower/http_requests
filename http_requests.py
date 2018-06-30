@@ -144,6 +144,7 @@ domains = sorted(list(s))
 
 print(domains)
 
+
 # Option 2
 # Another way - to use more complex regular expression
 pattern = r'<a(.*?)href(.*?)=(.*?)(\"|')(((.*?):\/\/)|(\.\.)|)(.*?)(\/|:|\"|')(.*)'
